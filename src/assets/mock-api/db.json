@@ -1,0 +1,432 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "role": "admin",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/men/1.jpg",
+      "phone": "+1-555-0101",
+      "department": "Engineering",
+      "createdAt": "2024-01-15T10:30:00Z",
+      "lastLogin": "2024-01-20T14:45:00Z"
+    },
+    {
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "role": "admin",
+      "status": "active",
+      "department": "Marketing",
+      "phone": "+1-555-0102",
+      "id": 2
+    },
+    {
+      "id": 3,
+      "name": "Bob Johnson",
+      "email": "bob@example.com",
+      "role": "user",
+      "status": "inactive",
+      "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
+      "phone": "+1-555-0103",
+      "department": "Sales",
+      "createdAt": "2024-01-05T11:00:00Z",
+      "lastLogin": "2024-01-15T13:30:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Alice Brown",
+      "email": "alice@example.com",
+      "role": "user",
+      "status": "inactive",
+      "avatar": "https://randomuser.me/api/portraits/women/4.jpg",
+      "phone": "+1-555-0103",
+      "department": "Sales",
+      "createdAt": "2024-01-05T11:00:00Z",
+      "lastLogin": "2024-01-15T13:30:00Z"
+    },
+    {
+      "id": 5,
+      "name": "Charlie Wilson",
+      "email": "charlie@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/men/5.jpg",
+      "phone": "+1-555-0105",
+      "department": "Support",
+      "createdAt": "2024-01-08T14:20:00Z",
+      "lastLogin": "2024-01-18T09:30:00Z"
+    },
+    {
+      "id": 6,
+      "name": "Emily Davis",
+      "email": "emily@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/women/6.jpg",
+      "phone": "+1-555-0106",
+      "department": "HR",
+      "createdAt": "2024-01-11T12:00:00Z",
+      "lastLogin": "2024-01-19T11:00:00Z"
+    },
+    {
+      "id": 7,
+      "name": "Frank Miller",
+      "email": "frank@example.com",
+      "role": "user",
+      "status": "inactive",
+      "avatar": "https://randomuser.me/api/portraits/men/7.jpg",
+      "phone": "+1-555-0103",
+      "department": "Engineering",
+      "createdAt": "2024-01-05T11:00:00Z",
+      "lastLogin": "2024-01-15T13:30:00Z"
+    },
+    {
+      "id": 8,
+      "name": "Grace Lee",
+      "email": "grace@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/women/8.jpg",
+      "phone": "+1-555-0108",
+      "department": "Finance",
+      "createdAt": "2024-01-14T10:10:00Z",
+      "lastLogin": "2024-01-20T08:30:00Z"
+    },
+    {
+      "id": 9,
+      "name": "Henry Clark",
+      "email": "henry@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/men/9.jpg",
+      "phone": "+1-555-0109",
+      "department": "Engineering",
+      "createdAt": "2024-01-09T09:45:00Z",
+      "lastLogin": "2024-01-17T17:00:00Z"
+    },
+    {
+      "id": 10,
+      "name": "Ivy Walker",
+      "email": "ivy@example.com",
+      "role": "user",
+      "status": "inactive",
+      "avatar": "https://randomuser.me/api/portraits/women/10.jpg",
+      "phone": "+1-555-0110",
+      "department": "Support",
+      "createdAt": "2024-01-07T08:30:00Z",
+      "lastLogin": "2024-01-16T10:00:00Z"
+    },
+    {
+      "id": 11,
+      "name": "Jack Hall",
+      "email": "jack@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/men/11.jpg",
+      "phone": "+1-555-0111",
+      "department": "Sales",
+      "createdAt": "2024-01-06T11:20:00Z",
+      "lastLogin": "2024-01-15T12:00:00Z"
+    },
+    {
+      "id": 12,
+      "name": "Karen Young",
+      "email": "karen@example.com",
+      "role": "editor",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/women/12.jpg",
+      "phone": "+1-555-0112",
+      "department": "Content",
+      "createdAt": "2024-01-12T13:00:00Z",
+      "lastLogin": "2024-01-19T13:00:00Z"
+    },
+    {
+      "id": 13,
+      "name": "Leo King",
+      "email": "leo@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/men/13.jpg",
+      "phone": "+1-555-0113",
+      "department": "Engineering",
+      "createdAt": "2024-01-10T10:30:00Z",
+      "lastLogin": "2024-01-18T14:00:00Z"
+    },
+    {
+      "id": 14,
+      "name": "Mia Scott",
+      "email": "mia@example.com",
+      "role": "user",
+      "status": "inactive",
+      "avatar": "https://randomuser.me/api/portraits/women/14.jpg",
+      "phone": "+1-555-0114",
+      "department": "HR",
+      "createdAt": "2024-01-08T09:00:00Z",
+      "lastLogin": "2024-01-17T09:30:00Z"
+    },
+    {
+      "id": 15,
+      "name": "Noah Green",
+      "email": "noah@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/men/15.jpg",
+      "phone": "+1-555-0115",
+      "department": "Finance",
+      "createdAt": "2024-01-07T14:00:00Z",
+      "lastLogin": "2024-01-16T11:00:00Z"
+    },
+    {
+      "id": 16,
+      "name": "Olivia Adams",
+      "email": "olivia@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/women/16.jpg",
+      "phone": "+1-555-0116",
+      "department": "Marketing",
+      "createdAt": "2024-01-05T13:30:00Z",
+      "lastLogin": "2024-01-15T15:00:00Z"
+    },
+    {
+      "id": 17,
+      "name": "Paul Nelson",
+      "email": "paul@example.com",
+      "role": "moderator",
+      "status": "inactive",
+      "avatar": "https://randomuser.me/api/portraits/men/17.jpg",
+      "phone": "+1-555-0117",
+      "department": "Support",
+      "createdAt": "2024-01-04T12:00:00Z",
+      "lastLogin": "2024-01-14T10:00:00Z"
+    },
+    {
+      "id": 18,
+      "name": "Quinn Carter",
+      "email": "quinn@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/women/18.jpg",
+      "phone": "+1-555-0118",
+      "department": "Engineering",
+      "createdAt": "2024-01-03T11:00:00Z",
+      "lastLogin": "2024-01-13T09:00:00Z"
+    },
+    {
+      "id": 19,
+      "name": "Ryan Mitchell",
+      "email": "ryan@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/men/19.jpg",
+      "phone": "+1-555-0119",
+      "department": "Sales",
+      "createdAt": "2024-01-02T10:00:00Z",
+      "lastLogin": "2024-01-12T08:00:00Z"
+    },
+    {
+      "id": 20,
+      "name": "Sophia Perez",
+      "email": "sophia@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/women/20.jpg",
+      "phone": "+1-555-0120",
+      "department": "Content",
+      "createdAt": "2024-01-01T09:00:00Z",
+      "lastLogin": "2024-01-11T07:00:00Z"
+    },
+    {
+      "id": 21,
+      "name": "Tommy Rivera",
+      "email": "tommy@example.com",
+      "role": "user",
+      "status": "inactive",
+      "avatar": "https://randomuser.me/api/portraits/men/21.jpg",
+      "phone": "+1-555-0121",
+      "department": "Engineering",
+      "createdAt": "2023-12-31T08:00:00Z",
+      "lastLogin": "2024-01-10T06:00:00Z"
+    },
+    {
+      "id": 22,
+      "name": "Uma Bell",
+      "email": "uma@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/women/22.jpg",
+      "phone": "+1-555-0122",
+      "department": "HR",
+      "createdAt": "2023-12-30T07:00:00Z",
+      "lastLogin": "2024-01-09T05:00:00Z"
+    },
+    {
+      "id": 23,
+      "name": "Victor Cooper",
+      "email": "victor@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/men/23.jpg",
+      "phone": "+1-555-0123",
+      "department": "Finance",
+      "createdAt": "2023-12-29T06:00:00Z",
+      "lastLogin": "2024-01-08T04:00:00Z"
+    },
+    {
+      "id": 24,
+      "name": "Wendy Murphy",
+      "email": "wendy@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/women/24.jpg",
+      "phone": "+1-555-0124",
+      "department": "Marketing",
+      "createdAt": "2023-12-28T05:00:00Z",
+      "lastLogin": "2024-01-07T03:00:00Z"
+    },
+    {
+      "id": 25,
+      "name": "Xander Reed",
+      "email": "xander@example.com",
+      "role": "user",
+      "status": "inactive",
+      "avatar": "https://randomuser.me/api/portraits/men/25.jpg",
+      "phone": "+1-555-0125",
+      "department": "Sales",
+      "createdAt": "2023-12-27T04:00:00Z",
+      "lastLogin": "2024-01-06T02:00:00Z"
+    },
+    {
+      "id": 26,
+      "name": "Yara Price",
+      "email": "yara@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/women/26.jpg",
+      "phone": "+1-555-0126",
+      "department": "Support",
+      "createdAt": "2023-12-26T03:00:00Z",
+      "lastLogin": "2024-01-05T01:00:00Z"
+    },
+    {
+      "id": 27,
+      "name": "Zane Brooks",
+      "email": "zane@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/men/27.jpg",
+      "phone": "+1-555-0127",
+      "department": "Engineering",
+      "createdAt": "2023-12-25T02:00:00Z",
+      "lastLogin": "2024-01-04T00:00:00Z"
+    },
+    {
+      "id": 28,
+      "name": "Amy Fox",
+      "email": "amy@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/women/28.jpg",
+      "phone": "+1-555-0128",
+      "department": "HR",
+      "createdAt": "2023-12-24T01:00:00Z",
+      "lastLogin": "2024-01-03T23:00:00Z"
+    },
+    {
+      "id": 29,
+      "name": "Ben Stone",
+      "email": "ben@example.com",
+      "role": "user",
+      "status": "inactive",
+      "avatar": "https://randomuser.me/api/portraits/men/29.jpg",
+      "phone": "+1-555-0129",
+      "department": "Finance",
+      "createdAt": "2023-12-23T00:00:00Z",
+      "lastLogin": "2024-01-02T22:00:00Z"
+    },
+    {
+      "id": 30,
+      "name": "Cathy Lane",
+      "email": "cathy@example.com",
+      "role": "user",
+      "status": "active",
+      "avatar": "https://randomuser.me/api/portraits/women/30.jpg",
+      "phone": "+1-555-0130",
+      "department": "Content",
+      "createdAt": "2023-12-22T23:00:00Z",
+      "lastLogin": "2024-01-01T21:00:00Z"
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "userId": 1,
+      "bio": "Senior Software Engineer with 8+ years of experience in full-stack development.",
+      "location": "San Francisco, CA",
+      "website": "https://johndoe.dev",
+      "social": {
+        "linkedin": "https://linkedin.com/in/johndoe",
+        "twitter": "https://twitter.com/johndoe",
+        "github": "https://github.com/johndoe"
+      },
+      "skills": [
+        "JavaScript",
+        "TypeScript",
+        "Angular",
+        "Node.js",
+        "Python"
+      ],
+      "experience": [
+        {
+          "company": "Tech Corp",
+          "position": "Senior Developer",
+          "duration": "2020-2024",
+          "description": "Led development of multiple web applications"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "id": 1,
+      "userId": 1,
+      "theme": "light",
+      "notifications": {
+        "email": true,
+        "push": true,
+        "sms": false
+      },
+      "language": "en",
+      "timezone": "America/Los_Angeles"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "Getting Started with Angular Material",
+      "content": "Angular Material provides a set of reusable, accessible, and well-tested UI components...",
+      "authorId": 1,
+      "status": "published",
+      "createdAt": "2024-01-20T10:00:00Z",
+      "tags": [
+        "angular",
+        "material",
+        "tutorial"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Best Practices for Admin Dashboards",
+      "content": "Creating effective admin dashboards requires careful consideration of user experience...",
+      "authorId": 2,
+      "status": "draft",
+      "createdAt": "2024-01-19T15:30:00Z",
+      "tags": [
+        "dashboard",
+        "ux",
+        "admin"
+      ]
+    }
+  ]
+}

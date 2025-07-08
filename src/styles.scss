@@ -1,0 +1,138 @@
+@use "tailwindcss/base";
+@use "tailwindcss/components";
+@use "tailwindcss/utilities";
+
+/* Angular Material Theme */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Material Design overrides */
+.mat-mdc-card {
+  border-radius: 8px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+.mat-mdc-button {
+  border-radius: 4px !important;
+}
+
+.mat-mdc-raised-button {
+  border-radius: 4px !important;
+}
+
+/* Snackbar styling for different severities */
+.snackbar-info {
+  background-color: #2196f3 !important;
+  color: white !important;
+}
+
+.snackbar-warning {
+  background-color: #ff9800 !important;
+  color: white !important;
+}
+
+.snackbar-error {
+  background-color: #f44336 !important;
+  color: white !important;
+}
+
+.snackbar-critical {
+  background-color: #d32f2f !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+/* Error handling styles */
+.error-container {
+  padding: 16px;
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+.error-info {
+  background-color: #e3f2fd;
+  border: 1px solid #2196f3;
+  color: #1976d2;
+}
+
+.error-warning {
+  background-color: #fff3e0;
+  border: 1px solid #ff9800;
+  color: #f57c00;
+}
+
+.error-error {
+  background-color: #ffebee;
+  border: 1px solid #f44336;
+  color: #d32f2f;
+}
+
+.error-critical {
+  background-color: #ffcdd2;
+  border: 1px solid #d32f2f;
+  color: #b71c1c;
+  font-weight: bold;
+}
+
+/* Remove default margin/padding from html, body, app-root, and mat-sidenav-container */
+html, body, app-root, .mat-sidenav-container {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure the sidenav container and content fill the viewport */
+.mat-sidenav-container, .mat-sidenav-content {
+  height: 100vh !important;
+  min-height: 0 !important;
+  /* width: 100vw !important; */
+  /* min-width: 0 !important; */
+  box-sizing: border-box;
+}
+
+/* Always show a thin scrollbar, overlay style if possible */
+.bg-gray-50 {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 #f8fafc;
+  /* For Chrome, Edge, Safari */
+  overflow-y: overlay;
+}
+.bg-gray-50::-webkit-scrollbar {
+  width: 8px;
+}
+.bg-gray-50::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.bg-gray-50::-webkit-scrollbar-track {
+  background: #f8fafc;
+} 
