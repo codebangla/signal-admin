@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://i.imgur.com/uTfn6RP.png" alt="Signal Admin Preview" />
+</p>
+
 # Signal Admin Panel
 
 A modern admin panel built with Angular 20, Angular Material, and TailwindCSS. Features a responsive design with collapsible sidebar, user management, forms, and UI components.
@@ -42,28 +46,32 @@ src/
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 20+
 - npm or yarn
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
-git clone <repository-url>
+git clone https://github.com/codebangla/signal-admin.git
 cd signal-admin
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm start
 ```
 
 4. Start the mock API server (in a separate terminal):
+
 ```bash
 npm run api
 ```
@@ -88,23 +96,27 @@ The app includes mock authentication with the following credentials:
 ## Features Overview
 
 ### Dashboard
+
 - Overview cards with key metrics
 - Recent activity feed
 - Quick action buttons
 
 ### User Management
+
 - User list with search and filtering
 - Add/Edit/Delete operations
 - Role-based status indicators
 - Avatar support
 
 ### Forms
+
 - Comprehensive form examples
 - Validation patterns
 - Various input types (text, email, select, date, etc.)
 - Form submission handling
 
 ### UI Components
+
 - Buttons, cards, chips
 - Progress indicators
 - Badges and icons
@@ -124,6 +136,7 @@ The project includes a json-server setup with the following endpoints:
 ## Styling
 
 The project uses:
+
 - **TailwindCSS 3.4.0** for utility classes
 - **Angular Material** for components
 - **Custom CSS** for specific styling needs
@@ -140,12 +153,15 @@ The project uses:
 ### Component Structure
 
 All components are standalone and follow this pattern:
+
 ```typescript
 @Component({
-  selector: 'app-component-name',
+  selector: "app-component-name",
   standalone: true,
-  imports: [/* Material modules */],
-  template: `/* Inline template */`
+  imports: [
+    /* Material modules */
+  ],
+  template: `/* Inline template */`,
 })
 export class ComponentName {}
 ```
@@ -153,6 +169,7 @@ export class ComponentName {}
 ## Deployment
 
 1. Build the application:
+
 ```bash
 npm run build
 ```
@@ -168,4 +185,4 @@ npm run build
 
 ## License
 
-This project is licensed under the MIT License. 
+This project is licensed under the MIT License.
