@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -47,65 +47,65 @@ import { map, startWith } from 'rxjs/operators';
     MatSnackBarModule
   ],
   template: `
-    <div class="space-y-8 p-6">
+    <div class="p-6 space-y-8">
       <!-- Header -->
       <div class="text-center mb-8">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2">Form Elements Showcase</h1>
-        <p class="text-gray-600">Comprehensive collection of Angular Material form controls</p>
+        <h1 class="text-3xl font-bold mb-2">Form Elements Showcase</h1>
+        <p>Comprehensive collection of Angular Material form controls</p>
       </div>
 
       <!-- Basic Information Section -->
-      <mat-card class="shadow-lg">
-        <mat-card-header class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6">
-          <mat-card-title class="text-xl font-semibold text-gray-800">
+      <mat-card>
+        <mat-card-header class="p-6">
+          <mat-card-title class="text-xl font-semibold flex items-center">
             <mat-icon class="mr-2">person</mat-icon>
             Basic Information
           </mat-card-title>
-          <mat-card-subtitle class="text-gray-600">Personal details and contact information</mat-card-subtitle>
+          <mat-card-subtitle>Personal details and contact information</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="p-6">
           <form [formGroup]="demoForm" (ngSubmit)="onSubmit()" class="space-y-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <!-- Full Name -->
-              <mat-form-field appearance="outline" class="w-full">
+              <mat-form-field class="w-full">
                 <mat-label>Full Name</mat-label>
-                <input matInput formControlName="fullName" placeholder="Enter your full name">
+                <input matInput [formControl]="fullNameFormControl" placeholder="Enter your full name">
                 <mat-icon matSuffix>person</mat-icon>
-                <mat-error *ngIf="demoForm.get('fullName')?.hasError('required')">
-                  Full name is required
-                </mat-error>
-                <mat-error *ngIf="demoForm.get('fullName')?.hasError('minlength')">
-                  Name must be at least 2 characters
-                </mat-error>
+                @if (fullNameFormControl.hasError('required')) {
+                  <mat-error>Full name is required</mat-error>
+                }
+                @if (fullNameFormControl.hasError('minlength')) {
+                  <mat-error>Name must be at least 2 characters</mat-error>
+                }
               </mat-form-field>
 
               <!-- Email -->
-              <mat-form-field appearance="outline" class="w-full">
+              <mat-form-field class="w-full">
                 <mat-label>Email Address</mat-label>
-                <input matInput type="email" formControlName="email" placeholder="Enter your email">
+                <input matInput type="email" [formControl]="emailFormControl" placeholder="Enter your email">
                 <mat-icon matSuffix>email</mat-icon>
-                <mat-error *ngIf="demoForm.get('email')?.hasError('required')">
-                  Email is required
-                </mat-error>
-                <mat-error *ngIf="demoForm.get('email')?.hasError('email')">
-                  Please enter a valid email
-                </mat-error>
+                @if (emailFormControl.hasError('required')) {
+                  <mat-error>Email is required</mat-error>
+                }
+                @if (emailFormControl.hasError('email')) {
+                  <mat-error>Please enter a valid email</mat-error>
+                }
               </mat-form-field>
 
               <!-- Phone -->
-              <mat-form-field appearance="outline" class="w-full">
+              <mat-form-field class="w-full">
                 <mat-label>Phone Number</mat-label>
-                <input matInput formControlName="phone" placeholder="Enter your phone number">
+                <input matInput [formControl]="phoneFormControl" placeholder="Enter your phone number">
                 <mat-icon matSuffix>phone</mat-icon>
-                <mat-error *ngIf="demoForm.get('phone')?.hasError('required')">
-                  Phone number is required
-                </mat-error>
+                @if (phoneFormControl.hasError('required')) {
+                  <mat-error>Phone number is required</mat-error>
+                }
               </mat-form-field>
 
               <!-- Country -->
-              <mat-form-field appearance="outline" class="w-full">
+              <mat-form-field class="w-full">
                 <mat-label>Country</mat-label>
-                <mat-select formControlName="country">
+                <mat-select [formControl]="countryFormControl">
                   <mat-option value="us">United States</mat-option>
                   <mat-option value="ca">Canada</mat-option>
                   <mat-option value="uk">United Kingdom</mat-option>
@@ -115,27 +115,27 @@ import { map, startWith } from 'rxjs/operators';
                   <mat-option value="jp">Japan</mat-option>
                 </mat-select>
                 <mat-icon matSuffix>public</mat-icon>
-                <mat-error *ngIf="demoForm.get('country')?.hasError('required')">
-                  Please select a country
-                </mat-error>
+                @if (countryFormControl.hasError('required')) {
+                  <mat-error>Please select a country</mat-error>
+                }
               </mat-form-field>
 
               <!-- City with Autocomplete -->
-              <mat-form-field appearance="outline" class="w-full">
+              <mat-form-field class="w-full">
                 <mat-label>City</mat-label>
-                <input type="text" matInput formControlName="city" [matAutocomplete]="auto">
+                <input type="text" matInput [formControl]="cityFormControl" [matAutocomplete]="auto">
                 <mat-autocomplete #auto="matAutocomplete">
-                  <mat-option *ngFor="let city of filteredCities | async" [value]="city">
-                    {{ city }}
-                  </mat-option>
+                  @for (city of filteredCities | async; track city) {
+                    <mat-option [value]="city">{{ city }}</mat-option>
+                  }
                 </mat-autocomplete>
                 <mat-icon matSuffix>location_city</mat-icon>
               </mat-form-field>
 
               <!-- Birth Date -->
-              <mat-form-field appearance="outline" class="w-full">
+              <mat-form-field class="w-full">
                 <mat-label>Birth Date</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName="birthDate">
+                <input matInput [matDatepicker]="picker" [formControl]="birthDateFormControl">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
                 <mat-icon matSuffix>calendar_today</mat-icon>
@@ -143,26 +143,26 @@ import { map, startWith } from 'rxjs/operators';
             </div>
 
             <!-- Address -->
-            <mat-form-field appearance="outline" class="w-full">
+            <mat-form-field class="w-full">
               <mat-label>Address</mat-label>
-              <textarea matInput formControlName="address" rows="3" placeholder="Enter your full address"></textarea>
+              <textarea matInput [formControl]="addressFormControl" rows="3" placeholder="Enter your full address"></textarea>
               <mat-icon matSuffix>home</mat-icon>
             </mat-form-field>
 
             <!-- Gender Selection -->
             <div class="space-y-3">
-              <label class="block text-sm font-medium text-gray-700">Gender</label>
-              <mat-radio-group formControlName="gender" class="flex space-x-6">
+              <label class="block text-sm font-medium">Gender</label>
+              <mat-radio-group [formControl]="genderFormControl" class="flex space-x-6">
                 <mat-radio-button value="male" class="flex items-center">
-                  <mat-icon class="mr-2 text-blue-500">male</mat-icon>
+                  <mat-icon class="mr-2">male</mat-icon>
                   Male
                 </mat-radio-button>
                 <mat-radio-button value="female" class="flex items-center">
-                  <mat-icon class="mr-2 text-pink-500">female</mat-icon>
+                  <mat-icon class="mr-2">female</mat-icon>
                   Female
                 </mat-radio-button>
                 <mat-radio-button value="other" class="flex items-center">
-                  <mat-icon class="mr-2 text-purple-500">person</mat-icon>
+                  <mat-icon class="mr-2">person</mat-icon>
                   Other
                 </mat-radio-button>
               </mat-radio-group>
@@ -172,7 +172,7 @@ import { map, startWith } from 'rxjs/operators';
 
             <!-- Preferences Section -->
             <div class="space-y-6">
-              <h3 class="text-lg font-semibold text-gray-800 flex items-center">
+              <h3 class="text-lg font-semibold flex items-center">
                 <mat-icon class="mr-2">settings</mat-icon>
                 Preferences & Settings
               </h3>
@@ -180,30 +180,30 @@ import { map, startWith } from 'rxjs/operators';
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Interests -->
                 <div class="space-y-3">
-                  <label class="block text-sm font-medium text-gray-700">Interests</label>
+                  <label class="block text-sm font-medium">Interests</label>
                   <div class="grid grid-cols-2 gap-3">
-                    <mat-checkbox formControlName="interests.sports" class="flex items-center">
-                      <mat-icon class="mr-2 text-green-500">sports_soccer</mat-icon>
+                    <mat-checkbox [formControl]="sportsFormControl" class="flex items-center">
+                      <mat-icon class="mr-2">sports_soccer</mat-icon>
                       Sports
                     </mat-checkbox>
-                    <mat-checkbox formControlName="interests.music" class="flex items-center">
-                      <mat-icon class="mr-2 text-blue-500">music_note</mat-icon>
+                    <mat-checkbox [formControl]="musicFormControl" class="flex items-center">
+                      <mat-icon class="mr-2">music_note</mat-icon>
                       Music
                     </mat-checkbox>
-                    <mat-checkbox formControlName="interests.reading" class="flex items-center">
-                      <mat-icon class="mr-2 text-orange-500">book</mat-icon>
+                    <mat-checkbox [formControl]="readingFormControl" class="flex items-center">
+                      <mat-icon class="mr-2">book</mat-icon>
                       Reading
                     </mat-checkbox>
-                    <mat-checkbox formControlName="interests.travel" class="flex items-center">
-                      <mat-icon class="mr-2 text-purple-500">flight</mat-icon>
+                    <mat-checkbox [formControl]="travelFormControl" class="flex items-center">
+                      <mat-icon class="mr-2">flight</mat-icon>
                       Travel
                     </mat-checkbox>
-                    <mat-checkbox formControlName="interests.cooking" class="flex items-center">
-                      <mat-icon class="mr-2 text-red-500">restaurant</mat-icon>
+                    <mat-checkbox [formControl]="cookingFormControl" class="flex items-center">
+                      <mat-icon class="mr-2">restaurant</mat-icon>
                       Cooking
                     </mat-checkbox>
-                    <mat-checkbox formControlName="interests.gaming" class="flex items-center">
-                      <mat-icon class="mr-2 text-indigo-500">games</mat-icon>
+                    <mat-checkbox [formControl]="gamingFormControl" class="flex items-center">
+                      <mat-icon class="mr-2">games</mat-icon>
                       Gaming
                     </mat-checkbox>
                   </div>
@@ -211,16 +211,18 @@ import { map, startWith } from 'rxjs/operators';
 
                 <!-- Skills -->
                 <div class="space-y-3">
-                  <label class="block text-sm font-medium text-gray-700">Skills</label>
-                  <mat-form-field appearance="outline" class="w-full">
+                  <label class="block text-sm font-medium">Skills</label>
+                  <mat-form-field class="w-full">
                     <mat-label>Add skills</mat-label>
                     <mat-chip-grid #chipGrid>
-                      <mat-chip-row *ngFor="let skill of skills" (removed)="removeSkill(skill)">
-                        {{ skill }}
-                        <button matChipRemove>
-                          <mat-icon>cancel</mat-icon>
-                        </button>
-                      </mat-chip-row>
+                      @for (skill of skills; track skill) {
+                        <mat-chip-row (removed)="removeSkill(skill)">
+                          {{ skill }}
+                          <button matChipRemove>
+                            <mat-icon>cancel</mat-icon>
+                          </button>
+                        </mat-chip-row>
+                      }
                     </mat-chip-grid>
                     <input placeholder="New skill..." [matChipInputFor]="chipGrid" (matChipInputTokenEnd)="addSkill($event)">
                   </mat-form-field>
@@ -230,22 +232,22 @@ import { map, startWith } from 'rxjs/operators';
               <!-- Slider Controls -->
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-3">
-                  <label class="block text-sm font-medium text-gray-700">Experience Level</label>
-                  <mat-slider formControlName="experienceLevel" min="0" max="10" step="1" class="w-full">
+                  <label class="block text-sm font-medium">Experience Level</label>
+                  <mat-slider [formControl]="experienceLevelFormControl" min="0" max="10" step="1" class="w-full">
                     <input matSliderThumb>
                   </mat-slider>
-                  <div class="flex justify-between text-xs text-gray-500">
+                  <div class="flex justify-between text-xs">
                     <span>Beginner</span>
                     <span>Expert</span>
                   </div>
                 </div>
 
                 <div class="space-y-3">
-                  <label class="block text-sm font-medium text-gray-700">Salary Range</label>
-                  <mat-slider formControlName="salaryRange" min="30000" max="150000" step="5000" class="w-full">
+                  <label class="block text-sm font-medium">Salary Range</label>
+                  <mat-slider [formControl]="salaryRangeFormControl" min="30000" max="150000" step="5000" class="w-full">
                     <input matSliderThumb>
                   </mat-slider>
-                  <div class="text-sm text-gray-600">
+                  <div class="text-sm">
                     {{ getSalaryValue() }} per year
                   </div>
                 </div>
@@ -253,28 +255,28 @@ import { map, startWith } from 'rxjs/operators';
 
               <!-- Toggle Switches -->
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div class="flex items-center justify-between p-3 rounded-lg">
                   <div>
                     <div class="font-medium">Email Notifications</div>
-                    <div class="text-sm text-gray-500">Receive email updates</div>
+                    <div class="text-sm">Receive email updates</div>
                   </div>
-                  <mat-slide-toggle formControlName="emailNotifications" color="primary"></mat-slide-toggle>
+                  <mat-slide-toggle [formControl]="emailNotificationsFormControl" color="primary"></mat-slide-toggle>
                 </div>
 
-                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div class="flex items-center justify-between p-3 rounded-lg">
                   <div>
                     <div class="font-medium">SMS Notifications</div>
-                    <div class="text-sm text-gray-500">Receive SMS alerts</div>
+                    <div class="text-sm">Receive SMS alerts</div>
                   </div>
-                  <mat-slide-toggle formControlName="smsNotifications" color="primary"></mat-slide-toggle>
+                  <mat-slide-toggle [formControl]="smsNotificationsFormControl" color="primary"></mat-slide-toggle>
                 </div>
 
-                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div class="flex items-center justify-between p-3 rounded-lg">
                   <div>
                     <div class="font-medium">Public Profile</div>
-                    <div class="text-sm text-gray-500">Make profile visible</div>
+                    <div class="text-sm">Make profile visible</div>
                   </div>
-                  <mat-slide-toggle formControlName="publicProfile" color="primary"></mat-slide-toggle>
+                  <mat-slide-toggle [formControl]="publicProfileFormControl" color="primary"></mat-slide-toggle>
                 </div>
               </div>
             </div>
@@ -283,17 +285,17 @@ import { map, startWith } from 'rxjs/operators';
 
             <!-- File Upload Section -->
             <div class="space-y-4">
-              <h3 class="text-lg font-semibold text-gray-800 flex items-center">
+              <h3 class="text-lg font-semibold flex items-center">
                 <mat-icon class="mr-2">upload_file</mat-icon>
                 File Upload
               </h3>
               
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="space-y-3">
-                  <label class="block text-sm font-medium text-gray-700">Profile Picture</label>
-                  <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
-                    <mat-icon class="text-4xl text-gray-400 mb-2">cloud_upload</mat-icon>
-                    <div class="text-sm text-gray-600 mb-2">Click to upload or drag and drop</div>
+                  <label class="block text-sm font-medium">Profile Picture</label>
+                  <div class="border-2 border-dashed rounded-lg p-6 text-center">
+                    <mat-icon class="text-4xl mb-2">cloud_upload</mat-icon>
+                    <div class="text-sm mb-2">Click to upload or drag and drop</div>
                     <button mat-stroked-button type="button" class="mt-2">
                       <mat-icon class="mr-2">add_photo_alternate</mat-icon>
                       Choose File
@@ -302,10 +304,10 @@ import { map, startWith } from 'rxjs/operators';
                 </div>
 
                 <div class="space-y-3">
-                  <label class="block text-sm font-medium text-gray-700">Resume/CV</label>
-                  <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition-colors">
-                    <mat-icon class="text-4xl text-gray-400 mb-2">description</mat-icon>
-                    <div class="text-sm text-gray-600 mb-2">Upload your resume (PDF, DOC)</div>
+                  <label class="block text-sm font-medium">Resume/CV</label>
+                  <div class="border-2 border-dashed rounded-lg p-6 text-center">
+                    <mat-icon class="text-4xl mb-2">description</mat-icon>
+                    <div class="text-sm mb-2">Upload your resume (PDF, DOC)</div>
                     <button mat-stroked-button type="button" class="mt-2">
                       <mat-icon class="mr-2">upload_file</mat-icon>
                       Choose File
@@ -318,8 +320,8 @@ import { map, startWith } from 'rxjs/operators';
             <!-- Progress Bar -->
             <div class="space-y-3">
               <div class="flex justify-between items-center">
-                <label class="block text-sm font-medium text-gray-700">Form Completion</label>
-                <span class="text-sm text-gray-500">{{ getFormCompletion() }}%</span>
+                <label class="block text-sm font-medium">Form Completion</label>
+                <span class="text-sm">{{ getFormCompletion() }}%</span>
               </div>
               <mat-progress-bar mode="determinate" [value]="getFormCompletion()" color="primary"></mat-progress-bar>
             </div>
@@ -340,24 +342,51 @@ import { map, startWith } from 'rxjs/operators';
       </mat-card>
 
       <!-- Form Values Display -->
-      <mat-card *ngIf="submitted" class="shadow-lg">
-        <mat-card-header class="bg-green-50 p-6">
-          <mat-card-title class="text-xl font-semibold text-green-800">
-            <mat-icon class="mr-2">check_circle</mat-icon>
-            Form Submitted Successfully!
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="p-6">
-          <div class="bg-gray-50 p-4 rounded-lg">
-            <h4 class="font-medium text-gray-800 mb-3">Submitted Data:</h4>
-            <pre class="text-sm text-gray-700 overflow-auto">{{ formValues | json }}</pre>
-          </div>
-        </mat-card-content>
-      </mat-card>
+      @if (submitted) {
+        <mat-card>
+          <mat-card-header class="p-6">
+            <mat-card-title class="text-xl font-semibold flex items-center">
+              <mat-icon class="mr-2">check_circle</mat-icon>
+              Form Submitted Successfully!
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="p-6">
+            <div class="p-4 rounded-lg">
+              <h4 class="font-medium mb-3">Submitted Data:</h4>
+              <pre class="text-sm overflow-auto">{{ formValues | json }}</pre>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      }
     </div>
   `
 })
 export class FormDemoComponent {
+  // Form Controls
+  fullNameFormControl = new FormControl('', [Validators.required, Validators.minLength(2)]);
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  phoneFormControl = new FormControl('', [Validators.required, Validators.pattern(/^[\+]?[1-9][\d]{0,15}$/)]);
+  countryFormControl = new FormControl('', [Validators.required]);
+  cityFormControl = new FormControl('');
+  addressFormControl = new FormControl('');
+  birthDateFormControl = new FormControl('');
+  genderFormControl = new FormControl('');
+  
+  // Interest Form Controls
+  sportsFormControl = new FormControl(false);
+  musicFormControl = new FormControl(false);
+  readingFormControl = new FormControl(false);
+  travelFormControl = new FormControl(false);
+  cookingFormControl = new FormControl(false);
+  gamingFormControl = new FormControl(false);
+  
+  // Settings Form Controls
+  experienceLevelFormControl = new FormControl(5);
+  salaryRangeFormControl = new FormControl(75000);
+  emailNotificationsFormControl = new FormControl(true);
+  smsNotificationsFormControl = new FormControl(false);
+  publicProfileFormControl = new FormControl(true);
+
   demoForm: FormGroup;
   submitted = false;
   formValues: any;
@@ -367,31 +396,31 @@ export class FormDemoComponent {
 
   constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {
     this.demoForm = this.fb.group({
-      fullName: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^[\+]?[1-9][\d]{0,15}$/)]],
-      country: ['', Validators.required],
-      city: [''],
-      address: [''],
-      birthDate: [''],
-      gender: [''],
+      fullName: this.fullNameFormControl,
+      email: this.emailFormControl,
+      phone: this.phoneFormControl,
+      country: this.countryFormControl,
+      city: this.cityFormControl,
+      address: this.addressFormControl,
+      birthDate: this.birthDateFormControl,
+      gender: this.genderFormControl,
       interests: this.fb.group({
-        sports: [false],
-        music: [false],
-        reading: [false],
-        travel: [false],
-        cooking: [false],
-        gaming: [false]
+        sports: this.sportsFormControl,
+        music: this.musicFormControl,
+        reading: this.readingFormControl,
+        travel: this.travelFormControl,
+        cooking: this.cookingFormControl,
+        gaming: this.gamingFormControl
       }),
-      experienceLevel: [5],
-      salaryRange: [75000],
-      emailNotifications: [true],
-      smsNotifications: [false],
-      publicProfile: [true]
+      experienceLevel: this.experienceLevelFormControl,
+      salaryRange: this.salaryRangeFormControl,
+      emailNotifications: this.emailNotificationsFormControl,
+      smsNotifications: this.smsNotificationsFormControl,
+      publicProfile: this.publicProfileFormControl
     });
 
     // Setup autocomplete for cities
-    this.filteredCities = this.demoForm.get('city')!.valueChanges.pipe(
+    this.filteredCities = this.cityFormControl.valueChanges.pipe(
       startWith(''),
       map(value => this._filterCities(value || ''))
     );
@@ -418,7 +447,7 @@ export class FormDemoComponent {
   }
 
   getSalaryValue(): number {
-    return this.demoForm.get('salaryRange')?.value || 0;
+    return this.salaryRangeFormControl.value || 0;
   }
 
   getFormCompletion(): number {
@@ -451,4 +480,4 @@ export class FormDemoComponent {
     this.skills = ['JavaScript', 'Angular', 'TypeScript'];
     this.snackBar.open('Form reset successfully', 'Close', { duration: 2000 });
   }
-} 
+}

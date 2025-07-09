@@ -22,16 +22,13 @@
       "id": 2
     },
     {
-      "id": 3,
-      "name": "Bob Johnson",
-      "email": "bob@example.com",
-      "role": "user",
+      "name": "Alice Brownsss",
+      "email": "alice@example.com",
+      "role": "editor",
       "status": "inactive",
-      "avatar": "https://randomuser.me/api/portraits/men/3.jpg",
-      "phone": "+1-555-0103",
       "department": "Sales",
-      "createdAt": "2024-01-05T11:00:00Z",
-      "lastLogin": "2024-01-15T13:30:00Z"
+      "phone": "+1-555-0103",
+      "id": 3
     },
     {
       "id": 3,
