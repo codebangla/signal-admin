@@ -1,6 +1,4 @@
-<p align="center">
-  <img src="https://i.imgur.com/uTfn6RP.png" alt="Signal Admin Preview" />
-</p>
+![Signal Admin Preview](https://i.imgur.com/uTfn6RP.png)
 
 # Signal Admin Panel
 
